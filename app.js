@@ -5,14 +5,12 @@ const app = express();
 
 const notFoundMiddleware = require("./middleware/not-found.js");
 const errorMiddleware = require("./middleware/error-handler.js");
+
 const productsRouter = require("./routes/products.js");
+
 const connectDB = require("./db/connect.js");
 
 app.use(express.json());
-
-app.get("/", (req, res) => {
-  res.send("<h1>Store API</h1><a href='/api/v1/products'>products route</a>");
-});
 
 app.use("/api/v1/products", productsRouter);
 

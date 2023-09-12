@@ -1,10 +1,14 @@
 const Router = require("express").Router;
 
-const { getAllProducts, createProduct } = require("../controllers/product");
+const {
+  getAllProducts,
+  getAllProductsStatic,
+  createProduct
+} = require("../controllers/product");
 
 const router = Router();
 
-router.get("/", getAllProducts);
-router.post("/", createProduct);
+router.route("/").get(getAllProducts).post(createProduct);
+router.route("/static").get(getAllProductsStatic);
 
 module.exports = router;
